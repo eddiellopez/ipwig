@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">IpWig</string>
+    <string name="sample_ip_text">127.0.0.1</string>
+    <string name="ip_text_context_description">Shows an ip address</string>
+    <string name="add_widget">Add widget</string>
+    <string name="no_network">No network</string>
+    <string name="refresh_context_description">Refresh IP</string>
+</resources>
