@@ -19,6 +19,7 @@
             android:layout_centerVertical="true"/>
 
     <ImageButton
+            android:padding="16dp"
             android:background="@color/colorBackground"
             android:layout_marginStart="8dp"
             android:tint="@color/colorWhite"
@@ -27,7 +28,7 @@
             android:src="@drawable/ic_refresh"
             android:contentDescription="@string/refresh_context_description"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/appwidget_text"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
