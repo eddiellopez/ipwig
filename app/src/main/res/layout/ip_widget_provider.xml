@@ -15,12 +15,12 @@
             android:textColor="@color/colorWhite"
             android:textSize="24sp"
             android:contentDescription="@string/ip_text_context_description"
-            android:background="@color/colorBackground"
+            android:background="@color/colorPrimary"
             android:layout_centerVertical="true"/>
 
     <ImageButton
             android:padding="16dp"
-            android:background="@color/colorBackground"
+            android:background="@color/colorPrimary"
             android:layout_marginStart="8dp"
             android:tint="@color/colorWhite"
             android:id="@+id/refresh_button"

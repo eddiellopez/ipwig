@@ -47,7 +47,7 @@ class IpWidgetProvider : AppWidgetProvider() {
             val cm = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
 
             // Get the list of Ip Addresses
-            val ips: List<String> = findIpAddresses(cm)
+            val ips: List<String> = findV4IpAddresses(cm)
 
             val ipString = if (ips.isEmpty()) {
                 context.getString(R.string.no_network)
@@ -64,17 +64,17 @@ class IpWidgetProvider : AppWidgetProvider() {
         /**
          * Finds a list of IPv4 addresses that are connected, not broadcast and not loopback.
          *
-         * @param connectivityManager The connectivity manager
+         * @param cm The connectivity manager
          * @return The list of IP addresses, if any
          */
-        private fun findIpAddresses(connectivityManager: ConnectivityManager): List<String> {
+        private fun findV4IpAddresses(cm: ConnectivityManager): List<String> {
             // TODO: Try `activeNetwork`
-            val networkList = connectivityManager.allNetworks.asList()
+            val networkList = cm.allNetworks.asList()
             val ips: MutableList<String> = mutableListOf()
 
             networkList.forEach {
-                val linkProperties = connectivityManager.getLinkProperties(it)
-                val networkInfo = connectivityManager.getNetworkInfo(it)
+                val linkProperties = cm.getLinkProperties(it)
+                val networkInfo = cm.getNetworkInfo(it)
 
                 Log.i(TAG, "Is connected: " + networkInfo.isConnected)
                 Log.i(TAG, "Interface name: " + linkProperties.interfaceName)

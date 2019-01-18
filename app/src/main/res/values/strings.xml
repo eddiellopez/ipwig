@@ -5,4 +5,5 @@
     <string name="add_widget">Add widget</string>
     <string name="no_network">No network</string>
     <string name="refresh_context_description">Refresh IP</string>
+    <string name="connected_networks">Connected Networks</string>
 </resources>

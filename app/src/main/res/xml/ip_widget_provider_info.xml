@@ -9,4 +9,7 @@
         android:resizeMode="horizontal"
         android:widgetCategory="home_screen"
         android:initialKeyguardLayout="@layout/ip_widget_provider">
+    <!--TODO: See minResizeWidth and minResizeHeight to allow resizing below minWidth and height-->
+    <!--TODO: Set updatePeriodMillis to zero and use AlarmManager: Use ELAPSED_REALTIME or RTC.-->
+    <!--TODO: This will provide: Smaller update period, no update when de device is locked-->
 </appwidget-provider>
