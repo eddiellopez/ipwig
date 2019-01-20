@@ -6,4 +6,8 @@
     <string name="no_network">No network</string>
     <string name="refresh_context_description">Refresh IP</string>
     <string name="connected_networks">Connected Networks</string>
+    <string name="transport_cellular">CELLULAR</string>
+    <string name="transport_wifi">WIFI</string>
+    <string name="transport_separator" translatable="false">|</string>
+    <string name="on_cellular">On cellular</string>
 </resources>
