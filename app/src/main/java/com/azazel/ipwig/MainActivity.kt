@@ -1,11 +1,12 @@
 package com.azazel.ipwig
 
 import android.content.Context
-import android.net.*
+import android.net.ConnectivityManager
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.azazel.ipwig.data.ConnectionInfoProvider
 
 private const val TAG = "MainActivity"
 
@@ -44,8 +45,10 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         Log.i(TAG, "onResume()")
 
-        // Find and add the connections to the adapter
-        ConnectionUtils.findConnections(connectivityManager).forEach { connectionAdapter.add(it) }
+        // Find the connections and add them to the adapter.
+        ConnectionInfoProvider().findConnections(this).forEach {
+            connectionAdapter.add(it)
+        }
     }
 
     override fun onPause() {
@@ -63,34 +66,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-/**
- * Network callback subclass to act upon receiving network changes.
- */
-class OnNetworkCallback(private val context: Context) : ConnectivityManager.NetworkCallback() {
-    val request: NetworkRequest = NetworkRequest.Builder()
-        .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-        .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-        .build()
-
-    override fun onLost(network: Network?) {
-        Log.i(TAG, "onLost()")
-        updateWidget()
-        super.onLost(network)
-    }
-
-    override fun onLinkPropertiesChanged(network: Network?, linkProperties: LinkProperties?) {
-        Log.i(TAG, "onLinkPropertiesChanged()")
-        updateWidget()
-        super.onLinkPropertiesChanged(network, linkProperties)
-    }
-
-    override fun onAvailable(network: Network?) {
-        updateWidget()
-        Log.i(TAG, "onAvailable()")
-        super.onAvailable(network)
-    }
-
-    private fun updateWidget() {
-        IpWidgetProvider.updateView(context)
-    }
-}
